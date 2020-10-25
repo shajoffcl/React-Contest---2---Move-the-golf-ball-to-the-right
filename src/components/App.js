@@ -11,6 +11,7 @@ class App extends Component {
     };
     this.renderChoice = this.renderChoice.bind(this);
     this.buttonClickHandler = this.buttonClickHandler.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   //call back function
@@ -19,11 +20,25 @@ class App extends Component {
   }
   renderChoice() {
     if (this.state.renderBall) {
-      return <div className="ball" style={this.state.ballPosition}></div>;
+      return (
+        <div
+          className="ball"
+          style={this.state.ballPosition}
+          keydown={this.handleKeyDown()}
+        ></div>
+      );
     } else
       return (
         <button onClick={this.buttonClickHandler}>Click For One Ball</button>
       );
+  }
+
+  handleKeyDown(event) {
+    if (event.key === "ArrowRight" && event.keyCode === "39") {
+      this.setState({
+        ballPosition: { left: "5px" }
+      });
+    }
   }
 
   //bind ArrowRight keydown event
