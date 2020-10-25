@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import ReactDom from "react-dom";
 import "../styles/App.css";
 
 class App extends Component {
@@ -37,7 +36,7 @@ class App extends Component {
 
   //bind ArrowRight keydown event
   componentDidMount() {
-    ReactDom.findDOMNode(this).addEventListener("keydown", this.handleKeyDown);
+    window.addEventListener("keydown", this.handleKeyDown);
   }
 
   render() {
