@@ -28,10 +28,10 @@ class App extends Component {
   }
 
   handleKeyDown(event) {
-    if (event.key === "ArrowRight" && event.keyCode === 39) {
+    if (event.key === "ArrowRight" || event.keyCode === 39) {
       this.setState({
         ballPosition: {
-          left: this.state.ballPosition.left.split("px")[0] + 5 + "px"
+          left: +this.state.ballPosition.left.split("px")[0] + 5 + "px"
         }
       });
     }
