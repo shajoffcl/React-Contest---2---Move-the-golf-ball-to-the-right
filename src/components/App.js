@@ -28,15 +28,18 @@ class App extends Component {
   }
 
   handleKeyDown(event) {
-    console.log("keydown");
     if (event.key === "ArrowRight" && event.keyCode === 39) {
-      console.log("keydown");
+      this.setState({
+        ballPosition: {
+          left: this.state.ballPosition.left.split("px")[0] + 5 + "px"
+        }
+      });
     }
   }
 
   //bind ArrowRight keydown event
   componentDidMount() {
-    window.addEventListener("keydown", this.handleKeyDown);
+    document.addEventListener("keydown", this.handleKeyDown);
   }
 
   render() {
