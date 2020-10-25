@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import ReactDom from "react-dom";
 import "../styles/App.css";
 
 class App extends Component {
@@ -20,13 +21,7 @@ class App extends Component {
   }
   renderChoice() {
     if (this.state.renderBall) {
-      return (
-        <div
-          className="ball"
-          style={this.state.ballPosition}
-          keydown={this.handleKeyDown()}
-        ></div>
-      );
+      return <div className="ball" style={this.state.ballPosition}></div>;
     } else
       return (
         <button onClick={this.buttonClickHandler}>Click For One Ball</button>
@@ -34,15 +29,16 @@ class App extends Component {
   }
 
   handleKeyDown(event) {
-    if (event.key === "ArrowRight" && event.keyCode === "39") {
-      this.setState({
-        ballPosition: { left: "5px" }
-      });
+    console.log("keydown");
+    if (event.key === "ArrowRight" && event.keyCode === 39) {
+      console.log("keydown");
     }
   }
 
   //bind ArrowRight keydown event
-  componentDidMount() {}
+  componentDidMount() {
+    ReactDom.findDOMNode(this).addEventListener("keydown", this.handleKeyDown);
+  }
 
   render() {
     return <div className="playground">{this.renderChoice()}</div>;
